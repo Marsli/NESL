@@ -13,7 +13,7 @@ public class Test {
 		Client client = new Client();
 		try {
 			client.connect("127.0.0.1",8021,"ClueCon",100);
-			log.info("是否可以发送 "+client.canSend());
+			log.info("Test"+client.canSend());
 		} catch (InboundConnectionFailure e) {
 			e.printStackTrace();
 		}

@@ -62,7 +62,7 @@ public class EslMessage
      * Convenience method
      * 
      * @param headerName as a {@link EslHeaders.Name}
-     * @return true if an only if there is a header entry with the supplied header name 
+     * @return true if and only if there is a header entry with the supplied header name 
      */
     public boolean hasHeader( Name headerName )
     {

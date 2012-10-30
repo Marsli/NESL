@@ -138,7 +138,7 @@ public abstract class AbstractEslClientHandler extends SimpleChannelUpstreamHand
             sb.append( LINE_TERMINATOR );
         }
         sb.append( LINE_TERMINATOR );
-        
+        // 两个空行表示命令可以执行,fs定义.
         syncLock.lock();
         try 
         {
@@ -215,6 +215,9 @@ public abstract class AbstractEslClientHandler extends SimpleChannelUpstreamHand
 
     protected abstract void handleDisconnectionNotice();
     
+    /**
+     * 
+     */
     private static class SyncCallback
     {
         private static final Logger log = LoggerFactory.getLogger( SyncCallback.class );
@@ -226,15 +229,11 @@ public abstract class AbstractEslClientHandler extends SimpleChannelUpstreamHand
          * associated response object.
          * @return
          */
-        EslMessage get()
-        {
-            try
-            {
+        EslMessage get() {
+            try {
                 log.trace( "awaiting latch ... " );
                 latch.await();
-            }
-            catch ( InterruptedException e )
-            {
+            } catch ( InterruptedException e ) {
                 throw new RuntimeException( e );
             }
             
